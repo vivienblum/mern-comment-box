@@ -25,14 +25,14 @@ class CommentForm extends Component {
         <input
           type="text"
           placeholder="Your name..."
-          sylte={style.commentFormAuthor}
+          style={style.commentFormAuthor}
           value={this.state.author}
           onChange={this.handleAuthorChange}
         />
         <input
           type="text"
           placeholder="Say something..."
-          sylte={style.commentFormText}
+          style={style.commentFormText}
           value={this.state.text}
           onChange={this.handleTextChange}
         />
