@@ -2,20 +2,21 @@
 "use strict"
 
 //first we import our dependencies…
-var express = require("express")
-var mongoose = require("mongoose")
-var bodyParser = require("body-parser")
-var Comment = require("./model/comments")
+const express = require("express")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
+const db = require("./config/db")
+const Comment = require("./model/comments")
 
 //and create our instances
-var app = express()
-var router = express.Router()
+const app = express()
+const router = express.Router()
 
 //set our port to either a predetermined port number if you have set
 //it up, or 3001
-var port = process.env.API_PORT || 3001
+const port = process.env.API_PORT || 3001
 
-mongoose.connect("mongodb://root:root@ds125318.mlab.com:25318/comment_box")
+mongoose.connect(db.url)
 
 //now we should configure the API to use bodyParser and look for
 //JSON data in the request body
