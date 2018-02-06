@@ -7,6 +7,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const db = require("./config/db")
 const Comment = require("./model/comments")
+// const apiComments = require("./app/routes/comment_routes")
 
 //and create our instances
 const app = express()
@@ -68,6 +69,8 @@ router
       res.json({ message: "Comment successfully added!" })
     })
   })
+
+// router.use("/comments", apiComments)
 //starts the server and listens for requests
 app.listen(port, function() {
   console.log(`api running on port ${port}`)
