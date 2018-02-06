@@ -49,6 +49,24 @@ router.get("/", function(req, res) {
 //Use our router configuration when we call /api
 app.use("/api", router)
 
+router
+  .route("/comments")
+  .get(function(req, res) {
+    Comment.find(function(err, comments) {
+      if (err) res.send(err)
+      res.json(comments)
+    })
+  })
+  .post(function(req, res) {
+    var comment = new Comment()
+    comment.author = req.body.author
+    comment.text = req.body.text
+
+    comment.save(function(err) {
+      if (err) res.send(err)
+      res.json({ message: "Comment successfully added!" })
+    })
+  })
 //starts the server and listens for requests
 app.listen(port, function() {
   console.log(`api running on port ${port}`)
